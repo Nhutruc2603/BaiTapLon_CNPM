@@ -172,7 +172,6 @@ class Category(BaseModel):
         return self.name
 
 
-
 # sân bay
 class CatAirport(BaseModel):
     __tablename__ = 'catairport'
@@ -254,144 +253,144 @@ class Comment(BaseModel):
     created_date = Column(DateTime, default=datetime.now())
     product_id = Column(Integer, ForeignKey(Product.id), nullable=False)
     user_id = Column(Integer, ForeignKey(User.id), nullable=False)
+
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-        # import hashlib
-        #
-        # password = str(hashlib.md5('123456'.encode('utf-8')).hexdigest())
-        # u = User(name='nhutruc', username='admin',
-        #          password=password,
-        #          user_role=UserRole.ADMIN,
-        #          avatar='https://res.cloudinary.com/dxxwcby8l/image/upload/v1646729569/fi9v6vdljyfmiltegh7k.jpg')
-        # db.session.add(u)
-        # db.session.commit()
+        import hashlib
 
+        password = str(hashlib.md5('123456'.encode('utf-8')).hexdigest())
+        u = User(name='nhutruc', username='admin',
+                 password=password,
+                 user_role=UserRole.ADMIN,
+                 avatar='https://res.cloudinary.com/dxxwcby8l/image/upload/v1646729569/fi9v6vdljyfmiltegh7k.jpg')
+        db.session.add(u)
+        db.session.commit()
 
-# db.create_all()
-        # p1 = Product(name='TP.HCM - Phú Yên',
-        #              description='Máy bay: Airbus A321,Hành lý xách tay:7Kg(56x36x23)cm,Hành lý kí gửi: 0Kg',
-        #              price=40000000,
-        #              date_start='12-12-2022 08:15:00',
-        #              date_end='12-12-2022 13:50:00',
-        #              image='https://huongtientourist.com/wp-content/uploads/2022/04/VNO-Best-Time-To-Visit-Vung-Tau.jpeg',
-        #              start_place='TP.Hồ Chí Minh',
-        #              end_place='Phú Yên',
-        #              category_id=1,
-        #              catairport_id=1
-        #              )
-        # p2 = Product(name='TP.HCM - Quãng Ngãi',
-        #              description='Máy bay: BAMBOO A321,Hành lý xách tay:7Kg(56x36x23)cm,Hành lý kí gửi: <10Kg',
-        #              price=5000000,
-        #              date_start='15-12-2022 08:15:00',
-        #              date_end='15-12-2022 13:50:00',
-        #              image='https://culaochamtourist.vn/wp-content/uploads/2021/07/canh-dep-quang-ngai-3.jpg',
-        #              start_place='TP.Hồ Chí Minh',
-        #              end_place='Quãng Ngãi',
-        #              category_id=2,
-        #              catairport_id=2)
-        #
-        # p3 = Product(name='TP.HCM - Thượng Hải',
-        #              description='Máy bay: Boeing 787,Hành lý xách tay:8Kg(56x36x23)cm,Hành lý kí gửi: <10Kg',
-        #              price=7800000,
-        #              date_start='20-12-2022 08:15:00',
-        #              date_end='20-12-2022 13:50:00',
-        #              image='https://dulichchat.com/wp-content/uploads/2019/04/tay-duong-co-tran-dulichchat-6.jpg',
-        #              start_place='TP.Hồ Chí Minh',
-        #              end_place='Thượng Hải',
-        #              category_id=2,
-        #              catairport_id=4)
-        #
-        # p4 = Product(name='TP.HCM - HÀN QUỐC',
-        #              description='Máy bay: Boeing 787,Hành lý xách tay:8Kg(56x36x23)cm,Hành lý kí gửi: <10Kg',
-        #              price=5000000,
-        #              date_start='20-12-2022 08:15:00',
-        #              date_end='20-12-2022 13:50:00',
-        #              image='https://dulichchat.com/wp-content/uploads/2019/04/tay-duong-co-tran-dulichchat-6.jpg',
-        #              start_place='TP.Hồ Chí Minh',
-        #              end_place='Hàn Quốc',
-        #              category_id=2,
-        #              catairport_id=5)
-        # p5 = Product(name='TP.HCM - Phú sĩ',
-        #              description='Máy bay: Boeing 787,Hành lý xách tay:8Kg(56x36x23)cm,Hành lý kí gửi: <10Kg',
-        #              price=5000000,
-        #              date_start='20-12-2022 08:15:00',
-        #              date_end='20-12-2022 13:50:00',
-        #              image='http://vnnews24h.net/img_data/images/tim-hieu-nhung-dieu-thu-vi-ve-dat-nuoc-nhat-ban.jpg',
-        #              start_place='TP.Hồ Chí Minh',
-        #              end_place='Hàn Quốc',
-        #              category_id=4,
-        #              catairport_id=6)
-        # p6 = Product(name='Hà Nội - TP.Hồ Chí Minh',
-        #              description='Máy bay: Boeing 787,Hành lý xách tay:8Kg(56x36x23)cm,Hành lý kí gửi: <10Kg',
-        #              price=5000000,
-        #              date_start='20-12-2022 08:15:00',
-        #              date_end='20-12-2022 13:50:00',
-        #              image='http://vnnews24h.net/img_data/images/tim-hieu-nhung-dieu-thu-vi-ve-dat-nuoc-nhat-ban.jpg',
-        #              start_place='Hà Nội ',
-        #              end_place='TP.Hồ Chí Minh',
-        #              category_id=1,
-        #              catairport_id=6)
-        # p7 = Product(name='Cần Thơ - Thanh hóa',
-        #              description='Máy bay: Boeing 787,Hành lý xách tay:8Kg(56x36x23)cm,Hành lý kí gửi: <10Kg',
-        #              price=5000000,
-        #              date_start='15-12-2022 08:15:00',
-        #              date_end='15-12-2022 13:50:00',
-        #              image='https://wiki-travel.com.vn/uploads/picture/anhthuy1202-184230114249-du-lich-can-tho-hoang-hon.jpg',
-        #              start_place='TP.Hồ Chí Minh',
-        #              end_place='Cần Thơ',
-        #              category_id=1,
-        #              catairport_id=3)
-        # p8 = Product(name='TP.HCM - Đức',
-        #              description='Máy bay: Boeing 787,Hành lý xách tay:8Kg(56x36x23)cm,Hành lý kí gửi: <10Kg',
-        #              price=5000000,
-        #              date_start='15-12-2023 08:15:00',
-        #              date_end='15-12-2023 13:50:00',
-        #              image='https://www.vietnambooking.com/wp-content/uploads/2017/01/du-lich-phap-14-10-2017-9.jpg',
-        #              start_place='TP.Hồ Chí Minh',
-        #              end_place='Đức',
-        #              category_id=3,
-        #              catairport_id=4)
-        # # db.session.add(p1)
-        # # db.session.add(p2)
-        # # db.session.add(p3)
-        # # db.session.add(p4)
-        # # db.session.add(p5)
-        # db.session.add(p6)
-        # db.session.add(p7)
-        # db.session.add(p8)
-        # db.session.commit()
-# c1 = CatAirport(name='Thanh Hóa')
-# c2 = CatAirport(name='Cần Thơ')
-# c3 = CatAirport(name='Nha Trang')
-# c4 = CatAirport(name='Đà Nẵng')
-# c4 = CatAirport(name='SaPa')
-# c5 = CatAirport(name=' Hà Nội')
-#
-# c1 = CatAirport(name='Haneda')
-# c2 = CatAirport(name='Charles de Gaulle')
-# c3 = CatAirport(name='Franscico')
-# c4 = CatAirport(name='Delhi')
-# c5 = CatAirport(name=' Narita (NRT)')
-# db.session.add_all([c1, c2, c3, c4,c5])
-# db.session.commit()
+db.create_all()
+p1 = Product(name='TP.HCM - Phú Yên',
+             description='Máy bay: Airbus A321,Hành lý xách tay:7Kg(56x36x23)cm,Hành lý kí gửi: 0Kg',
+             price=40000000,
+             date_start='12-12-2022 08:15:00',
+             date_end='12-12-2022 13:50:00',
+             image='https://huongtientourist.com/wp-content/uploads/2022/04/VNO-Best-Time-To-Visit-Vung-Tau.jpeg',
+             start_place='TP.Hồ Chí Minh',
+             end_place='Phú Yên',
+             category_id=1,
+             catairport_id=1
+             )
+p2 = Product(name='TP.HCM - Quãng Ngãi',
+             description='Máy bay: BAMBOO A321,Hành lý xách tay:7Kg(56x36x23)cm,Hành lý kí gửi: <10Kg',
+             price=5000000,
+             date_start='15-12-2022 08:15:00',
+             date_end='15-12-2022 13:50:00',
+             image='https://culaochamtourist.vn/wp-content/uploads/2021/07/canh-dep-quang-ngai-3.jpg',
+             start_place='TP.Hồ Chí Minh',
+             end_place='Quãng Ngãi',
+             category_id=2,
+             catairport_id=2)
 
-# c1 = Category(name='Miền Bắc')
-# c2 = Category(name='Miền Trung')
-# c3 = Category(name='Miền Nam')
-# c4 = Category(name='Nước Ngoài')
-# db.session.add_all([c1, c2, c3, c4])
-# db.session.commit()
+p3 = Product(name='TP.HCM - Thượng Hải',
+             description='Máy bay: Boeing 787,Hành lý xách tay:8Kg(56x36x23)cm,Hành lý kí gửi: <10Kg',
+             price=7800000,
+             date_start='20-12-2022 08:15:00',
+             date_end='20-12-2022 13:50:00',
+             image='https://dulichchat.com/wp-content/uploads/2019/04/tay-duong-co-tran-dulichchat-6.jpg',
+             start_place='TP.Hồ Chí Minh',
+             end_place='Thượng Hải',
+             category_id=2,
+             catairport_id=4)
 
-# import hashlib
-#
-# password = str(hashlib.md5('123456'.encode('utf-8')).hexdigest())
-# u = User(name='nhutruc', username='admin',
-#          password=password,
-#          user_role=UserRole.ADMIN,
-#          avatar='https://res.cloudinary.com/dxxwcby8l/image/upload/v1646729569/fi9v6vdljyfmiltegh7k.jpg')
-# db.session.add(u)
-# db.session.commit()
+p4 = Product(name='TP.HCM - HÀN QUỐC',
+             description='Máy bay: Boeing 787,Hành lý xách tay:8Kg(56x36x23)cm,Hành lý kí gửi: <10Kg',
+             price=5000000,
+             date_start='20-12-2022 08:15:00',
+             date_end='20-12-2022 13:50:00',
+             image='https://dulichchat.com/wp-content/uploads/2019/04/tay-duong-co-tran-dulichchat-6.jpg',
+             start_place='TP.Hồ Chí Minh',
+             end_place='Hàn Quốc',
+             category_id=2,
+             catairport_id=5)
+p5 = Product(name='TP.HCM - Phú sĩ',
+             description='Máy bay: Boeing 787,Hành lý xách tay:8Kg(56x36x23)cm,Hành lý kí gửi: <10Kg',
+             price=5000000,
+             date_start='20-12-2022 08:15:00',
+             date_end='20-12-2022 13:50:00',
+             image='http://vnnews24h.net/img_data/images/tim-hieu-nhung-dieu-thu-vi-ve-dat-nuoc-nhat-ban.jpg',
+             start_place='TP.Hồ Chí Minh',
+             end_place='Hàn Quốc',
+             category_id=4,
+             catairport_id=6)
+p6 = Product(name='Hà Nội - TP.Hồ Chí Minh',
+             description='Máy bay: Boeing 787,Hành lý xách tay:8Kg(56x36x23)cm,Hành lý kí gửi: <10Kg',
+             price=5000000,
+             date_start='20-12-2022 08:15:00',
+             date_end='20-12-2022 13:50:00',
+             image='http://vnnews24h.net/img_data/images/tim-hieu-nhung-dieu-thu-vi-ve-dat-nuoc-nhat-ban.jpg',
+             start_place='Hà Nội ',
+             end_place='TP.Hồ Chí Minh',
+             category_id=1,
+             catairport_id=6)
+p7 = Product(name='Cần Thơ - Thanh hóa',
+             description='Máy bay: Boeing 787,Hành lý xách tay:8Kg(56x36x23)cm,Hành lý kí gửi: <10Kg',
+             price=5000000,
+             date_start='15-12-2022 08:15:00',
+             date_end='15-12-2022 13:50:00',
+             image='https://wiki-travel.com.vn/uploads/picture/anhthuy1202-184230114249-du-lich-can-tho-hoang-hon.jpg',
+             start_place='TP.Hồ Chí Minh',
+             end_place='Cần Thơ',
+             category_id=1,
+             catairport_id=3)
+p8 = Product(name='TP.HCM - Đức',
+             description='Máy bay: Boeing 787,Hành lý xách tay:8Kg(56x36x23)cm,Hành lý kí gửi: <10Kg',
+             price=5000000,
+             date_start='15-12-2023 08:15:00',
+             date_end='15-12-2023 13:50:00',
+             image='https://www.vietnambooking.com/wp-content/uploads/2017/01/du-lich-phap-14-10-2017-9.jpg',
+             start_place='TP.Hồ Chí Minh',
+             end_place='Đức',
+             category_id=3,
+             catairport_id=4)
+db.session.add(p1)
+db.session.add(p2)
+db.session.add(p3)
+db.session.add(p4)
+db.session.add(p5)
+db.session.add(p6)
+db.session.add(p7)
+db.session.add(p8)
+db.session.commit()
+c1 = CatAirport(name='Thanh Hóa')
+c2 = CatAirport(name='Cần Thơ')
+c3 = CatAirport(name='Nha Trang')
+c4 = CatAirport(name='Đà Nẵng')
+c4 = CatAirport(name='SaPa')
+c5 = CatAirport(name=' Hà Nội')
 
-# db.create_all()
+c1 = CatAirport(name='Haneda')
+c2 = CatAirport(name='Charles de Gaulle')
+c3 = CatAirport(name='Franscico')
+c4 = CatAirport(name='Delhi')
+c5 = CatAirport(name=' Narita (NRT)')
+db.session.add_all([c1, c2, c3, c4, c5])
+db.session.commit()
 
+c1 = Category(name='Miền Bắc')
+c2 = Category(name='Miền Trung')
+c3 = Category(name='Miền Nam')
+c4 = Category(name='Nước Ngoài')
+db.session.add_all([c1, c2, c3, c4])
+db.session.commit()
+
+import hashlib
+
+password = str(hashlib.md5('123456'.encode('utf-8')).hexdigest())
+u = User(name='nhutruc', username='admin',
+         password=password,
+         user_role=UserRole.ADMIN,
+         avatar='https://res.cloudinary.com/dxxwcby8l/image/upload/v1646729569/fi9v6vdljyfmiltegh7k.jpg')
+db.session.add(u)
+db.session.commit()
+
+db.create_all()
